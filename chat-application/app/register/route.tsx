@@ -30,6 +30,4 @@ export const POST = async (request: Request) => {
 
     return new NextResponse("Internal Error", { status: 500 });
   }
-
-  
 };
