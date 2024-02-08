@@ -2,11 +2,12 @@
 import React from "react";
 
 import { signOut } from "next-auth/react";
+import EmptyState from "../(site)/(components)/EmptyState";
 
 function Users() {
   return (
-    <div>
-      <button className="bg-red-500 rounded border-2 border-red-500 p-2 " onClick={() => signOut()}>Logout</button>
+    <div className="hidden lg:block lg:pl-80 h-full">
+      <EmptyState />
     </div>
   );
 }
