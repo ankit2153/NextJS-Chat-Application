@@ -30,11 +30,12 @@ const getConversations = async () => {
       },
     });
 
+    console.log({ conversations });
+
     return conversations;
   } catch (error: any) {
     return [];
   }
 };
 
-
-export default getConversations
+export default getConversations;
