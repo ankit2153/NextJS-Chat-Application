@@ -31,8 +31,6 @@ const ConversationList: React.FC<ConversationListProps> = ({
 
   const { conversationId, isOpen } = useConversation();
 
-  alert(items.length);
-
   return (
     <aside
       className={clsx(
@@ -50,13 +48,11 @@ const ConversationList: React.FC<ConversationListProps> = ({
         </div>
 
         {items.map((item) => (
-          // <ConversationBox
-          //   key={item.id}
-          //   data={item}
-          //   selected={conversationId === item.id}
-          // />
-
-          <p>{item.name}</p>
+          <ConversationBox
+            key={item.id}
+            data={item}
+            selected={conversationId === item.id}
+          />
         ))}
       </div>
     </aside>

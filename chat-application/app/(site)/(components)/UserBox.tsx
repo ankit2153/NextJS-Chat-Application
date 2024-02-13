@@ -19,14 +19,16 @@ const UserBox: React.FC<UserBoxProps> = ({ data }) => {
   const handleClick = useCallback(() => {
     setIsLoading(true);
 
-    axios
-      .post("/api/conversation", {
-        userId: data.id,
-      })
-      .then((data) => {
-        router.push(`/conversations/${data.data.id}`);
-      })
-      .finally(() => setIsLoading(false));
+    try {
+      axios
+        .post("/api/conversation", {
+          userId: data.id,
+        })
+        .then((data) => {
+          router.push(`/conversations/${data.data.id}`);
+        })
+        .finally(() => setIsLoading(false));
+    } catch (error) {}
   }, [data, router]);
   return (
     <div

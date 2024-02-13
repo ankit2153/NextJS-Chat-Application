@@ -15,8 +15,7 @@ export const POST = async (request: Request) => {
     if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
-
-    if ((isGroup && !members) || members.length < 2) {
+    if (isGroup && (!members || members.length < 2 || !name)) {
       return new NextResponse("Invalid data", { status: 400 });
     }
 
@@ -87,6 +86,6 @@ export const POST = async (request: Request) => {
 
     return NextResponse.json(newConversation);
   } catch (error: any) {
-    return new NextResponse("Internal error", { status: 500 });
+    return new NextResponse(error, { status: 500 });
   }
 };
