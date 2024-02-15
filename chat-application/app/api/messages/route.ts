@@ -64,6 +64,8 @@ export const POST = async (request: Request) => {
       },
     });
 
+    
+
     return NextResponse.json(newMessage, {
       headers: {
         "Access-Control-Allow-Origin": "*",
