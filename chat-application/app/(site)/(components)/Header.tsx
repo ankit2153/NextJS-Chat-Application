@@ -12,6 +12,7 @@ import Avatar from "./Avatar";
 import { ProfileDrawer } from "./ProfileDrawer";
 
 import { useState } from "react";
+import { AvatarGroup } from "./AvatarGroup";
 
 interface HeaderProps {
   conversation: Conversation & {
@@ -47,7 +48,11 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
             className="block  text-sky-500 hover:text-sky-600 transition cursor-pointer"
           ></Link>
 
-          <Avatar user={otherUser} />
+          {conversation.isGroup ? (
+            <AvatarGroup users={conversation.users} />
+          ) : (
+            <Avatar user={otherUser} />
+          )}
 
           <div className="flex flex-col">
             <div>{conversation.name || otherUser.name}</div>

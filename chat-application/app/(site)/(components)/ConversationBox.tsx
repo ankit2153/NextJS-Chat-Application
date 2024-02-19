@@ -17,6 +17,8 @@ import { FullConversationType } from "@/app/(types)";
 import useOtherUser from "@/app/(hooks)/useOtherUser";
 import Avatar from "./Avatar";
 
+import { AvatarGroup } from "./AvatarGroup";
+
 interface ConversationBoxProps {
   data: FullConversationType;
   selected?: boolean;
@@ -81,7 +83,11 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
         selected ? "bg-neutral-100" : "bg-white"
       )}
     >
-      <Avatar user={otherUser!} />
+      {data.isGroup ? (
+        <AvatarGroup users={data.users} />
+      ) : (
+        <Avatar user={otherUser} />
+      )}
 
       <div className="min-w-0 flex-1">
         <div className="focus:outline-none">
