@@ -1,3 +1,4 @@
+import { pusherServer } from "./../../../../(libs)/pusher";
 interface IParams {
   conversationId?: string;
 }
@@ -62,6 +63,21 @@ export const POST = async (
       },
     });
 
+    await pusherServer.trigger(currentUser.email, "conversation:update", {
+      id: conversationId,
+      messages: [updatedMessage],
+    });
+
+    if (lastMessage.seenIds.indexOf(currentUser.id) !== -1) {
+      return NextResponse.json(conversation);
+    }
+
+    await pusherServer.trigger(
+      conversationId!,
+      "message:update",
+      updatedMessage
+    );
+
     return NextResponse.json(updatedMessage);
   } catch (error: any) {
     console.log(error, "ERROR_MESSAGES_SEEN");
@@ -69,7 +85,3 @@ export const POST = async (
     return new NextResponse("Error", { status: 500 });
   }
 };
-
-
-
-

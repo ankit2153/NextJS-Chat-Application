@@ -81,7 +81,7 @@ export const DELETE = async (
     //     },
     //   },
     // });   // not working with  my current setup
-    
+
     //instead we will delete the conversation and messages associated with it
     // and then delete the conversation from the database using the deleteConversation function
 
