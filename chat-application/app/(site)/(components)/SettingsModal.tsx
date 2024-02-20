@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Modal } from "./Modal";
+import {Modal} from "./Modal";
 import Input from "./Input";
 import Image from "next/image";
 import { CldUploadButton } from "next-cloudinary";

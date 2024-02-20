@@ -59,8 +59,6 @@ export const GroupChatModal: React.FC<GroupChatModalProps> = ({
       })
       .catch(() => toast.error("Something went wrong"))
       .finally(() => setIsLoading(false));
-
-
   };
 
   const members = watch("members");
