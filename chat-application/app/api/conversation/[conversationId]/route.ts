@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 
 import prisma from "@/app/(libs)/prismadb";
 
+import { pusherServer } from "@/app/(libs)/pusher";
+
 interface IParams {
   conversationId?: string;
 }
@@ -86,6 +88,16 @@ export const DELETE = async (
     // and then delete the conversation from the database using the deleteConversation function
 
     await deleteConversation(conversationId!);
+
+    existingConversation.users.forEach((user) => {
+      if (user.email) {
+        pusherServer.trigger(
+          user.email,
+          "conversation:remove",
+          existingConversation
+        );
+      }
+    });
 
     return NextResponse.json("deleted", { status: 200 });
   } catch (error: any) {
