@@ -56,8 +56,8 @@ model Conversation {
   messagesIds String[]  @db.ObjectId
   messages    Message[]
 
-  userIds String[] @db.ObjectId
-  users   User[]   @relation(fields: [userIds], references: [id])
+  usersIds String[] @db.ObjectId
+  users    User[]   @relation(fields: [usersIds], references: [id])
 }
 
 model Message {
