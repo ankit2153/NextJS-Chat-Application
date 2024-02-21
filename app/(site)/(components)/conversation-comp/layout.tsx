@@ -3,7 +3,7 @@ import Sidebar from "../sidebar/Sidebar";
 import ConversationList from "../ConversationList";
 import getConversations from "../../../(actions)/getConversations";
 
-import getUsers from "../../../(actions)/getConversations";
+import getUsers from "../../../(actions)/getUsers";
 
 export default async function ConversationsLayout({
   children,
